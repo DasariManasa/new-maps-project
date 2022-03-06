@@ -4,13 +4,14 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core';
 import LocationOutLineIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab';
 
+
 import useStyles from './styles';
 
-const Maps = () =>{
+const Map = (setCoordinates, setBounds, coordinates) =>{
     const classes = useStyles();
     const isMobile = useMediaQuery('(min-width:600px)')
    
-    const coordinates = { lar: 0, lng: 0 };
+
     return(
         <div className={classes.mapContainer}>
             <GoogleMapReact
@@ -20,8 +21,12 @@ const Maps = () =>{
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={''}
-        onChange={''}
-        onChildClick={''}
+        onChange={(e) => {
+            setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+            setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw })
+            
+        }}
+        onchildClick={''}
       />
         </div>
 
@@ -29,4 +34,4 @@ const Maps = () =>{
     )
 }
 
-export default Maps;
+export default Map;
