@@ -7,7 +7,7 @@ import Rating from '@material-ui/lab';
 
 import useStyles from './styles';
 
-const Map = (setCoordinates, setBounds, coordinates) =>{
+const Map = (setCoordinates,setBounds,coordinates) =>{
     const classes = useStyles();
     const isMobile = useMediaQuery('(min-width:600px)')
    
@@ -15,17 +15,17 @@ const Map = (setCoordinates, setBounds, coordinates) =>{
     return(
         <div className={classes.mapContainer}>
             <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyBdQ5NS_yC2s_p4fDGGrtd6HdU_FYkk4C0' }}
+        bootstrapURLKeys={{ key: 'AIzaSyBYmETHz4ikMq3nLvo9ystk1BHijuBI31o' }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={''}
-        onChange={(e) => {
+         onChange={(e) => {
             setCoordinates({ lat: e.center.lat, lng: e.center.lng });
             setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw })
             
-        }}
+         }}
         onchildClick={''}
       />
         </div>

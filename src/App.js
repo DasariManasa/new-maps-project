@@ -18,8 +18,7 @@ const App = () =>{
         });
       }, []);
 
-    useEffect(() => {
-        console.log(coordinates, bounds);   
+    useEffect(() => {       
         getPlaceData()
         .then((data) => {
             console.log(data);
@@ -32,7 +31,7 @@ const App = () =>{
             <Header/>
             <Grid container spacing={10} style={{ width:'100%' }} >
                 <Grid item xs={12} md={4}>
-                    <List />
+                    <List places={places } />
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Map setCoordinates={setCoordinates}
